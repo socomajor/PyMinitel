@@ -82,6 +82,8 @@ class UI:
         # Un élément UI peut recevoir ou non les événements clavier
         # Par défaut, il ne les reçoit pas
         self.activable = False
+        
+        
 
     def executer(self):
         """Boucle d’exécution d’un élément
@@ -93,7 +95,8 @@ class UI:
         while True:
             try:
                 r = self.minitel.recevoir_sequence(attente=30)
-                self.gere_touche(r)
+                if not self.gere_touche(r) : 
+                    break
             except Empty :
                 pass
 
